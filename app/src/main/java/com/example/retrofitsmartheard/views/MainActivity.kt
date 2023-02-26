@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             /**
              * @GET Request - Simple
              */
-//            viewModel.loadDestinations()
+            viewModel.loadDestinations()
             /**
              * @Path Parameter
              */
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
             /**
              * @DELETE Request
              */
-            viewModel.deleteDestinationById(id = 8)
+//            viewModel.deleteDestinationById(id = 8)
         }
 
     }
