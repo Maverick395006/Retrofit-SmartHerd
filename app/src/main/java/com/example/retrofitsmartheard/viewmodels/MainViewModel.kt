@@ -59,7 +59,7 @@ class MainViewModel : ViewModel() {
 
     }
 
-    fun loadDestinationsByQuery(country:String) {
+    fun loadDestinationsByQuery(country: String) {
 
         val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
         val requestCall = destinationService.getDestinationsByQuery(country)
@@ -83,7 +83,7 @@ class MainViewModel : ViewModel() {
 
     }
 
-    fun loadDestinationsByQueryMap(filter:HashMap<String,String>) {
+    fun loadDestinationsByQueryMap(filter: HashMap<String, String>) {
 
         val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
         val requestCall = destinationService.getDestinationsByQueryMap(filter)
@@ -100,6 +100,78 @@ class MainViewModel : ViewModel() {
             }
 
             override fun onFailure(call: Call<List<Destination>>, t: Throwable) {
+                Log.d("LOCAL DATA", "ERROR: ${t.message}")
+            }
+
+        })
+
+    }
+
+    fun addNewDestination(newDestination: Destination) {
+
+        val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
+        val requestCall = destinationService.addNewDestination(newDestination)
+        requestCall.enqueue(object : Callback<Destination> {
+            override fun onResponse(
+                call: Call<Destination>,
+                response: Response<Destination>
+            ) {
+                if (response.isSuccessful) {
+                    Log.d("LOCAL DATA", "${response.body()}")
+                } else {
+                    Log.d("LOCAL DATA", "Failed to Retrieve Data from Server")
+                }
+            }
+
+            override fun onFailure(call: Call<Destination>, t: Throwable) {
+                Log.d("LOCAL DATA", "ERROR: ${t.message}")
+            }
+
+        })
+
+    }
+
+    fun updateDestinationById(id: Int, city: String, description: String, country: String) {
+
+        val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
+        val requestCall = destinationService.updateDestinationById(id, city, description, country)
+        requestCall.enqueue(object : Callback<Destination> {
+            override fun onResponse(
+                call: Call<Destination>,
+                response: Response<Destination>
+            ) {
+                if (response.isSuccessful) {
+                    Log.d("LOCAL DATA", "${response.body()}")
+                } else {
+                    Log.d("LOCAL DATA", "Failed to Retrieve Data from Server")
+                }
+            }
+
+            override fun onFailure(call: Call<Destination>, t: Throwable) {
+                Log.d("LOCAL DATA", "ERROR: ${t.message}")
+            }
+
+        })
+
+    }
+
+    fun deleteDestinationById(id: Int) {
+
+        val destinationService = ServiceBuilder.buildService(DestinationService::class.java)
+        val requestCall = destinationService.deleteDestinationById(id)
+        requestCall.enqueue(object : Callback<Unit> {
+            override fun onResponse(
+                call: Call<Unit>,
+                response: Response<Unit>
+            ) {
+                if (response.isSuccessful) {
+                    Log.d("LOCAL DATA", "${response.body()}")
+                } else {
+                    Log.d("LOCAL DATA", "Failed to Retrieve Data from Server")
+                }
+            }
+
+            override fun onFailure(call: Call<Unit>, t: Throwable) {
                 Log.d("LOCAL DATA", "ERROR: ${t.message}")
             }
 

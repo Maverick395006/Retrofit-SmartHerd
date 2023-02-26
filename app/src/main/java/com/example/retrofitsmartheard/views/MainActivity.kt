@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.example.retrofitsmartheard.adapters.DestinationAdapter
 import com.example.retrofitsmartheard.databinding.ActivityMainBinding
+import com.example.retrofitsmartheard.models.Destination
 import com.example.retrofitsmartheard.viewmodels.MainViewModel
 import com.example.retrofitsmartheard.viewmodels.MainViewModelFactory
 
@@ -43,10 +44,35 @@ class MainActivity : AppCompatActivity() {
             /**
              * @QueryMap for Multiple Query Parameter
              */
-            val filter = HashMap<String, String>()
-            filter["country"] = "India"
-            filter["count"] = "1"
-            viewModel.loadDestinationsByQueryMap(filter)
+//            val filter = HashMap<String, String>()
+//            filter["country"] = "India"
+//            filter["count"] = "1"
+//            viewModel.loadDestinationsByQueryMap(filter)
+
+            /**
+             * @POST Request
+             */
+//            viewModel.addNewDestination(Destination(
+//                id = 6,
+//                city = "Surat",
+//                description = "Diamond City",
+//                country = "India"
+//            ))
+
+            /**
+             * @PUT Request
+             */
+//            viewModel.updateDestinationById(
+//                id = 8,
+//                city = "Surat",
+//                description = "Diamond City & Now Textile Hub & in growing IT Sector.",
+//                country = "India"
+//            )
+
+            /**
+             * @DELETE Request
+             */
+            viewModel.deleteDestinationById(id = 8)
         }
 
     }
