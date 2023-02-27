@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             /**
              * @GET Request - Simple
              */
-            viewModel.loadDestinations()
+            viewModel.loadDestinations(this)
             /**
              * @Path Parameter
              */
